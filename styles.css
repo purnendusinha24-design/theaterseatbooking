@@ -1,3 +1,8 @@
+/* FIX: allow JS to show/hide modal */
+[hidden] {
+  display: none !important;
+}
+
 :root {
   --bg: #050816;
   --card: #ffffff;
