@@ -1,4 +1,4 @@
-/* FIX: allow JS to show/hide modal */
+/* Ensure [hidden] elements actually disappear */
 [hidden] {
   display: none !important;
 }
