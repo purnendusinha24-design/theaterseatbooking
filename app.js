@@ -356,21 +356,36 @@ function init() {
   refreshSummary();
   updateLastBookingInfo();
 
-  clearBtn.addEventListener("click", handleClear);
-  confirmBtn.addEventListener("click", () => openBookingStep("Desktop/Tablet"));
-  mobileConfirmBtn.addEventListener("click", () => openBookingStep("Mobile"));
+    if (clearBtn) {
+    clearBtn.addEventListener("click", handleClear);
+  }
 
-  bookingCancelBtn.addEventListener("click", closeBookingStep);
-  bookingOverlay.addEventListener("click", e => {
-    if (e.target === bookingOverlay) closeBookingStep();
-  });
+  if (confirmBtn) {
+    confirmBtn.addEventListener("click", () => openBookingStep("Desktop/Tablet"));
+  }
 
-  bookingConfirmBtn.addEventListener("click", () => {
-    saveBookingToLocalStorage();
-    closeBookingStep();
-    alert("Booking completed (fake)! It has been saved in this browser only.");
-    handleClear();
-  });
+  if (mobileConfirmBtn) {
+    mobileConfirmBtn.addEventListener("click", () => openBookingStep("Mobile"));
+  }
+
+  if (bookingCancelBtn) {
+    bookingCancelBtn.addEventListener("click", closeBookingStep);
+  }
+
+  if (bookingOverlay) {
+    bookingOverlay.addEventListener("click", e => {
+      if (e.target === bookingOverlay) closeBookingStep();
+    });
+  }
+
+  if (bookingConfirmBtn) {
+    bookingConfirmBtn.addEventListener("click", () => {
+      saveBookingToLocalStorage();
+      closeBookingStep();
+      alert("Booking completed (fake)! It has been saved in this browser only.");
+      handleClear();
+    });
+  }
 
   window.addEventListener("resize", updateModeLabel);
 }
