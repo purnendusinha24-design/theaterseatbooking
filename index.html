@@ -13,15 +13,25 @@
   </header>
 
   <main class="layout">
+    <!-- LEFT: Screen + seats -->
     <section class="seat-area" aria-label="Theater seat map">
-      <div class="screen"><span>SCREEN</span></div>
-      <div class="legend">
-        <span class="legend-item"><span class="seat sample available"></span> Available</span>
-        <span class="legend-item"><span class="seat sample selected"></span> Selected</span>
-        <span class="legend-item"><span class="seat sample occupied"></span> Occupied</span>
+      <div class="screen">
+        <span>SCREEN</span>
       </div>
 
-      <div class="sector-controls">
+      <div class="legend">
+        <span class="legend-item">
+          <span class="seat sample available"></span> Available
+        </span>
+        <span class="legend-item">
+          <span class="seat sample selected"></span> Selected
+        </span>
+        <span class="legend-item">
+          <span class="seat sample occupied"></span> Occupied
+        </span>
+      </div>
+
+      <div class="sector-controls" aria-label="Seat sectors">
         <span class="sector-label">Sector view:</span>
         <button type="button" class="sector-btn active" data-sector="all">All</button>
         <button type="button" class="sector-btn" data-sector="left">Left</button>
@@ -29,10 +39,11 @@
         <button type="button" class="sector-btn" data-sector="right">Right</button>
       </div>
 
-      <div id="seatsGrid" class="seats-grid"></div>
+      <div id="seatsGrid" class="seats-grid" aria-label="Seat grid"></div>
     </section>
 
-    <aside class="side-panel">
+    <!-- RIGHT: Summary + controls -->
+    <aside class="side-panel" aria-label="Booking summary and controls">
       <div class="panel-section">
         <h2>Your Selection</h2>
         <p id="modeLabel" class="mode-label"></p>
@@ -46,40 +57,65 @@
         <p><strong>Total:</strong> $<span id="totalPrice">0</span></p>
       </div>
 
-      <div class="panel-section"><p class="hint" id="lastBookingInfo"></p></div>
+      <div class="panel-section">
+        <p class="hint" id="lastBookingInfo"></p>
+      </div>
 
       <div class="panel-section controls">
         <button id="clearBtn" type="button" class="btn secondary">Clear selection</button>
-        <button id="confirmBtn" type="button" class="btn primary disabled" disabled>Continue to checkout</button>
+        <button id="confirmBtn" type="button" class="btn primary disabled" disabled>
+          Continue to checkout
+        </button>
       </div>
 
       <p class="hint" id="controlsHint"></p>
     </aside>
   </main>
 
-  <div class="mobile-bar">
-    <div><strong><span id="mobileCount">0</span> seat(s)</strong> – $<span id="mobileTotal">0</span></div>
+  <!-- Mobile bottom bar (small screens) -->
+  <div class="mobile-bar" aria-hidden="true">
+    <div>
+      <strong><span id="mobileCount">0</span> seat(s)</strong>
+      – $<span id="mobileTotal">0</span>
+    </div>
     <button class="btn primary disabled" id="mobileConfirmBtn" disabled>Checkout</button>
   </div>
 
+  <!-- Fake booking step overlay -->
   <div id="bookingOverlay" class="booking-overlay" hidden>
     <div class="booking-modal">
       <h2>Review your booking</h2>
       <p id="bookingSummary"></p>
 
-      <label>Name (optional)<input id="customerName" type="text"/></label>
-      <label>Email (optional)<input id="customerEmail" type="email"/></label>
+      <form id="bookingForm" onsubmit="return false;">
+        <label>
+          Name (optional)
+          <input id="customerName" type="text" autocomplete="name" />
+        </label>
+        <label>
+          Email (optional)
+          <input id="customerEmail" type="email" autocomplete="email" />
+        </label>
+      </form>
 
       <div class="booking-actions">
-        <button type="button" class="btn secondary" id="bookingCancelBtn">Cancel</button>
-        <button type="button" class="btn primary" id="bookingConfirmBtn">Confirm booking</button>
+        <button type="button" class="btn secondary" id="bookingCancelBtn">
+          Cancel
+        </button>
+        <button type="button" class="btn primary" id="bookingConfirmBtn">
+          Confirm booking
+        </button>
       </div>
 
-      <p class="hint" id="bookingHint">This is a simulated checkout. Bookings are stored only in this browser.</p>
+      <p class="hint" id="bookingHint">
+        This is a simulated checkout. Bookings are stored only in this browser using localStorage.
+      </p>
     </div>
   </div>
 
-  <footer class="app-footer">© Sugarland Theaters · Prototype</footer>
+  <footer class="app-footer">
+    © Sugarland Theaters · Responsive seat booking prototype
+  </footer>
 
   <script src="app.js"></script>
 </body>
