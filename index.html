@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sugarland Theaters – Seat Selector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Sugarland Theaters</h1>
+    <p class="subtitle">Responsive seat booking prototype</p>
+  </header>
+
+  <main class="layout">
+    <section class="seat-area" aria-label="Theater seat map">
+      <div class="screen"><span>SCREEN</span></div>
+      <div class="legend">
+        <span class="legend-item"><span class="seat sample available"></span> Available</span>
+        <span class="legend-item"><span class="seat sample selected"></span> Selected</span>
+        <span class="legend-item"><span class="seat sample occupied"></span> Occupied</span>
+      </div>
+
+      <div class="sector-controls">
+        <span class="sector-label">Sector view:</span>
+        <button type="button" class="sector-btn active" data-sector="all">All</button>
+        <button type="button" class="sector-btn" data-sector="left">Left</button>
+        <button type="button" class="sector-btn" data-sector="center">Center</button>
+        <button type="button" class="sector-btn" data-sector="right">Right</button>
+      </div>
+
+      <div id="seatsGrid" class="seats-grid"></div>
+    </section>
+
+    <aside class="side-panel">
+      <div class="panel-section">
+        <h2>Your Selection</h2>
+        <p id="modeLabel" class="mode-label"></p>
+        <ul id="selectedList" class="selected-list">
+          <li class="placeholder">No seats selected yet.</li>
+        </ul>
+      </div>
+
+      <div class="panel-section totals">
+        <p><strong>Seats:</strong> <span id="selectedCount">0</span></p>
+        <p><strong>Total:</strong> $<span id="totalPrice">0</span></p>
+      </div>
+
+      <div class="panel-section"><p class="hint" id="lastBookingInfo"></p></div>
+
+      <div class="panel-section controls">
+        <button id="clearBtn" type="button" class="btn secondary">Clear selection</button>
+        <button id="confirmBtn" type="button" class="btn primary disabled" disabled>Continue to checkout</button>
+      </div>
+
+      <p class="hint" id="controlsHint"></p>
+    </aside>
+  </main>
+
+  <div class="mobile-bar">
+    <div><strong><span id="mobileCount">0</span> seat(s)</strong> – $<span id="mobileTotal">0</span></div>
+    <button class="btn primary disabled" id="mobileConfirmBtn" disabled>Checkout</button>
+  </div>
+
+  <div id="bookingOverlay" class="booking-overlay" hidden>
+    <div class="booking-modal">
+      <h2>Review your booking</h2>
+      <p id="bookingSummary"></p>
+
+      <label>Name (optional)<input id="customerName" type="text"/></label>
+      <label>Email (optional)<input id="customerEmail" type="email"/></label>
+
+      <div class="booking-actions">
+        <button type="button" class="btn secondary" id="bookingCancelBtn">Cancel</button>
+        <button type="button" class="btn primary" id="bookingConfirmBtn">Confirm booking</button>
+      </div>
+
+      <p class="hint" id="bookingHint">This is a simulated checkout. Bookings are stored only in this browser.</p>
+    </div>
+  </div>
+
+  <footer class="app-footer">© Sugarland Theaters · Prototype</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

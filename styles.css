@@ -1,0 +1,3 @@
+.btn.disabled, .btn:disabled { opacity:0.5!important; cursor:not-allowed!important; box-shadow:none!important; transform:none!important; }
+
+/* keeping previous css omitted for brevity in this python code */ 
